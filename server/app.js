@@ -64,14 +64,30 @@ dotenv.config();
 
 const app = express();
 
+
+const allowedOrigin = (origin) => {
+    if (!origin) return true;
+
+    if (origin === "http://localhost:5173") {
+        return true;
+    }
+
+    // Allow this Vercel project's deployment URLs
+    return /^https:\/\/task-[a-z0-9-]+-arpitmasharma-ship-its-projects\.vercel\.app$/.test(origin);
+};
+
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://task-460j40m7a-arpitmasharma-ship-its-projects.vercel.app"
-    ],
+    origin: (origin, callback) => {
+        if (allowedOrigin(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 
 app.use(express.json());
 
