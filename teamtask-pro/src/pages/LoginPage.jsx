@@ -31,7 +31,7 @@ const LoginPage = () => {
 
             // After Loging Successfully 
             console.log("Login Sucessfully")
-            navigate("/")
+            navigate("/projects")
         } catch (error) {
             console.error(
                 "Login Error:",
