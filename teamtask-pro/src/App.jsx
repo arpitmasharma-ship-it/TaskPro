@@ -9,11 +9,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path='/' element={<ProjectsPage />} /> */}
-        <Route path='/' element={<RegisterPage  />} /> {/* deployment ka error thik krna ke liya  */}
-        <Route path='/projects/:id' element={<ProjectDetailsPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        
+        <Route path="/" element={<ProjectsPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/projects/:id" element={<ProjectDetailsPage />} />
       </Routes>
     </BrowserRouter>
   )
