@@ -20,7 +20,8 @@ import axios from "axios";
 const axiosInstance = axios.create({
     // baseURL: "http://localhost:5000/api",
     // for deployment new url 
-   baseURL: "https://taskpro-inxf.onrender.com/api"
+    //    baseURL: "https://taskpro-inxf.onrender.com/api"
+    baseURL: import.meta.env.VITE_API_URL
 });
 
 // Request Interceptor
