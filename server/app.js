@@ -13,9 +13,17 @@ import authRoutes from "./routes/authRoutes.js";
 dotenv.config()
 const app = express()
 
+// app.use(cors({
+//     origin: "http://localhost:5173"
+// }))
+
+// for deployment 
 app.use(cors({
-    origin: "http://localhost:5173"
-}))
+    origin: [
+        "http://localhost:5173",
+        "https://task-m8ofn1y5n-arpitmasharma-ship-its-projects.vercel.app"
+    ]
+}));
 
 const PORT = process.env.PORT || 5000;
 app.use(express.json())
