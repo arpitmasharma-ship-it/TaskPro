@@ -17,7 +17,7 @@ app.use(cors({
     origin: "http://localhost:5173"
 }))
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000;
 app.use(express.json())
 connectDb()
 let projects = []
