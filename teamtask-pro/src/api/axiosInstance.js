@@ -18,7 +18,9 @@ Bearer =>  is the authentication scheme expected by your backend middleware.
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:5000/api",
+    // baseURL: "http://localhost:5000/api",
+    // for deployment new url 
+   baseURL: "https://taskpro-inxf.onrender.com/api"
 });
 
 // Request Interceptor
