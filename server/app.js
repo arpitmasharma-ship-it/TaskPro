@@ -47,7 +47,6 @@
 
 
 
-
 import dns from "node:dns";
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
@@ -64,30 +63,23 @@ dotenv.config();
 
 const app = express();
 
-
-const allowedOrigin = (origin) => {
-    if (!origin) return true;
-
-    if (origin === "http://localhost:5173") {
-        return true;
-    }
-
-    // Allow this Vercel project's deployment URLs
-    return /^https:\/\/task-[a-z0-9-]+-arpitmasharma-ship-its-projects\.vercel\.app$/.test(origin);
-};
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://task-pro-phi.vercel.app",
+    "https://task-pro-git-main-arpitmasharma-ship-its-projects.vercel.app",
+];
 
 app.use(cors({
     origin: (origin, callback) => {
-        if (allowedOrigin(origin)) {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error("Not allowed by CORS"));
         }
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
 
 app.use(express.json());
 
